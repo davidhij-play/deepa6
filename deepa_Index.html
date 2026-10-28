@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HDFS 352 - Spring 2027</title>
+    <style>
+        /* Base Styles for Readability and Mobile Responsiveness */
+        :root {
+            --primary-color: #2e7d32;
+            --background-color: #f9f9f9;
+            --text-color: #333333;
+            --border-color: #dddddd;
+            --nav-bg: #ffffff;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-size: 1.125rem; /* Large, readable text */
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navigation Menu */
+        nav {
+            background-color: var(--nav-bg);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 10px 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 600;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        nav a:hover, nav a:focus {
+            background-color: #e8f5e9;
+        }
+
+        /* Main Content Container */
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 40px 0;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-color);
+            margin-top: 0;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 5px;
+        }
+
+        .header-section {
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 3px solid var(--primary-color);
+        }
+
+        .header-section h2, .header-section h3 {
+            margin: 5px 0;
+            color: #555;
+            font-weight: normal;
+        }
+
+        /* Table Styling */
+        .table-container {
+            width: 100%;
+            overflow-x: auto; /* Ensures tables scroll horizontally on small screens */
+            margin-top: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px; /* Forces scrolling on very small screens to maintain readability */
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+            vertical-align: top;
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        /* Policies Lists */
+        .policy-item {
+            margin-bottom: 20px;
+        }
+
+        .policy-item h3 {
+            margin-bottom: 5px;
+            font-size: 1.25rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: var(--primary-color);
+            color: #ffffff;
+            margin-top: 20px;
+        }
+
+        /* Practice Link Button */
+        .practice-link {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: #ffffff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .practice-link:hover {
+            background-color: #1b5e20;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Simple Navigation Menu -->
+    <nav aria-label="Main Navigation">
+        <ul>
+            <li><a href="#glance">Course at a Glance</a></li>
+            <li><a href="#schedule">Weekly Schedule</a></li>
+            <li><a href="#grades">How Grades Work</a></li>
+            <li><a href="#policies">Policies</a></li>
+            <li><a href="#practice">Practice</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <!-- Header Section -->
+        <header class="header-section">
+            <h1>HDFS 352</h1>
+            <h2>Dr. Ram-Souza</h2>
+            <h3>Spring 2027</h3>
+        </header>
+
+        <!-- Course at a glance -->
+        <section id="glance">
+            <h2>Course at a glance</h2>
+            <p><strong>Meeting Times:</strong> Wednesdays (1:30 - 4 p.m.)</p>
+            <p><strong>Location:</strong> Miller 101</p>
+            <p><strong>Office Hours:</strong> Wednesdays (9 a.m. – 12 p.m.) or by arrangement. Email for appointments.</p>
+            <p><strong>Contact:</strong> ramsouza@hawaii.edu | 808-315-4467</p>
+        </section>
+
+        <!-- Weekly schedule -->
+        <section id="schedule">
+            <h2>Weekly schedule</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Week</th>
+                            <th>Topic</th>
+                            <th>Reading</th>
+                            <th>What is due</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>CLASS 1 - Introductions; Meet and Greet; Explore Syllabus</td>
+                            <td>—</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>CLASS 2 - Part 1: Identification<br>Speed dating, grouping, topic, present, feedback</td>
+                            <td>Ch 3: Sec 5 (Analyze community gaps)</td>
+                            <td>Assignment 1: Project Identification (5 points)<br>Due: Jan 20</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>CLASS 3 - Part 1: Planning<br>Gather info on gaps, needs, resources; literature search / review</td>
+                            <td>Ch 3: Sec 4 & Ch 3: Sec 19 (Collecting Info)</td>
+                            <td>Assignment 2: Project Planning / Biographical Sketch (5 points)<br>Due: Feb 3</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>CLASS 4 - Part 1: Planning (cont’d)<br>Data collection plan: needs, resources, and solutions; participant identification; methods identification, question development</td>
+                            <td>Methods: Ch 3: Sec 11 (Utilization) & Ch 3: Sec 12 (Interviews)</td>
+                            <td>Assignment 2b: Project Planning / Biographical Sketch (5 points)<br>Due: Feb 10</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>CLASS 5 - Part 1: Planning (cont’d)<br>Participants and method identified, questions created, appointment made; Biographical sketch</td>
+                            <td>—</td>
+                            <td>Assignment 2c: Project Planning / Biographical Sketch (5 points)<br>Due: Feb 17</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>CLASS 6 - Part 1: Data Collection<br>Interview to be completed by March 4.</td>
+                            <td>Asynchronous (we will not meet in person; please use class time to work on your own)</td>
+                            <td>Assignment 3: Data Collection (5 points)<br>Due: Feb 24</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>CLASS 7 - Part 1: Data Collection (con’t)<br>(work on your own)</td>
+                            <td>—</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td>CLASS 8 - Part 1: Data Analysis<br>Identify resources, needs, and solutions leading to project activities; share preliminary findings and experiences</td>
+                            <td>—</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td>CLASS 9 - Part 1:<br>Written paper on findings from interview with a community leader<br>In-Class presentations on findings</td>
+                            <td>—</td>
+                            <td>Assignment 4: Part 1 - Submit and Present Findings (15 points)<br>Due Mar 11 (1:30p)</td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td>SPRING BREAK !!!<br>Enjoy a bit of rest, please.</td>
+                            <td>No Class</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td>11</td>
+                            <td>CLASS 10 - Part 2: Proposal Development (Budgeting)<br>In class session: work as a group to develop a proposal using UROP format: project description, significance, process/methods, timetable, team member’s role, and budget.</td>
+                            <td>Ch 43: Sec 1 (Budgeting)</td>
+                            <td>Assignment 5: Budget Sheet (5 points)<br>Due: Mar 31</td>
+                        </tr>
+                        <tr>
+                            <td>12</td>
+                            <td>CLASS 11 - Part 2: Proposal Development (Grant Writing)<br>In class session: work as a group to develop a proposal using UROP format</td>
+                            <td>Ch 42: Sec 5 (Grant writing)</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td>13</td>
+                            <td>CLASS 12 - Part 2: Proposal Development (cont’d)<br>In class session: continue to work as a group</td>
+                            <td>Ch 46: Sec 2 (Strategies for sustainability)</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td>14</td>
+                            <td>CLASS 13 - Part 2: First draft submission (w/ Budget Sheet)<br>(work on your own)</td>
+                            <td>Substitute Professor</td>
+                            <td>Assignment 6: Draft 1 of Proposal (5 points)<br>Due: Apr 21</td>
+                        </tr>
+                        <tr>
+                            <td>15</td>
+                            <td>CLASS 14 - Part 2: Peer Review<br>Feedback sharing (in class session)</td>
+                            <td>—</td>
+                            <td>Assignment 7: Peer Review (5 points)<br>Due: Apr 28</td>
+                        </tr>
+                        <tr>
+                            <td>16</td>
+                            <td>CLASS 15 - Part 2: Practice<br>Grant searching</td>
+                            <td>Ch 42: Sec 4 (Grant searching)</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td>17</td>
+                            <td>No in-person class.<br>Submit by 11:55 p.m. on Lamakū: (a) written 6 to 8-page paper, (b) slides, (c)10-minute pre-recorded video, and (d) Budget sheet. No exceptions.</td>
+                            <td>—</td>
+                            <td>Assignment 8: Part 2 - (a) Written Paper, (b) Slides, & (c)Pre-Recorded Video (15 points)<br>Due: May 5</td>
+                        </tr>
+                        <tr>
+                            <td>18</td>
+                            <td>CLASS 16 - Part 2:<br>Presentation & Discussion</td>
+                            <td>—</td>
+                            <td>In-Class Presentation/ Discussion is Required (10 points)<br>May 6 & 13</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- How grades work -->
+        <section id="grades">
+            <h2>How grades work</h2>
+            <p>Final grades are based strictly on points earned (Total course points = 100):</p>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Weight / Points</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>In-class attendance</td>
+                            <td>16% (16 pts)</td>
+                        </tr>
+                        <tr>
+                            <td>Class Project Part 1 (Community interview)</td>
+                            <td>28% (28 pts)</td>
+                        </tr>
+                        <tr>
+                            <td>Peer Review</td>
+                            <td>11% (11 pts)</td>
+                        </tr>
+                        <tr>
+                            <td>Class Project Part 2 (Grant Proposal)</td>
+                            <td>45% (45 pts)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Total</strong></td>
+                            <td><strong>100 Points</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Policies -->
+        <section id="policies">
+            <h2>Policies</h2>
+            
+            <div class="policy-item">
+                <h3>Academic Honesty & Plagiarism</h3>
+                <p>The work that you do in this course must be your own (or with your team members if required). Plagiarism = “the act of passing off as one's own the ideas or writings of another”. Academic misconduct is not condoned or tolerated.</p>
+            </div>
+
+            <div class="policy-item">
+                <h3>Disability Accommodations (KOKUA)</h3>
+                <p>If you have a disability that requires accommodations, consult with the instructor the 1st week of class and contact the KOKUA Program at (808) 956-7511 or (808) 956-7612 (voice/text), room 013 at the Queen Lili'uokalani Center for Student Services.</p>
+            </div>
+
+            <div class="policy-item">
+                <h3>Grievance Policy</h3>
+                <p>Students are required to meet directly with the instructor as the first step in resolving a grievance. If you feel equitable treatment has not been received, you may contact the HDFS program coordinator for mediation.</p>
+            </div>
+
+            <div class="policy-item">
+                <h3>Student Conduct Code</h3>
+                <p>Students are expected to be responsible in relationships with others and to respect the interests of the institution in accordance with the University’s Student Conduct Code.</p>
+            </div>
+
+            <div class="policy-item">
+                <h3>Title IX</h3>
+                <p>UHM is committed to providing a learning, working and living environment that promotes personal integrity, civility, and mutual respect and is free of all forms of sex discrimination and gender-based violence. If you or someone you know experiences any of these, UHM has staff and resources on campus to support and assist you (Office of Title IX: 808-956-2299).</p>
+            </div>
+        </section>
+
+        <!-- Practice -->
+        <section id="practice">
+            <h2>Practice</h2>
+            <p>Test your knowledge below:</p>
+            <a href="quiz.html" class="practice-link">Practice quiz</a>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2027 Dr. Ram-Souza</p>
+    </footer>
+
+</body>
+</html>
